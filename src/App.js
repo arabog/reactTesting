@@ -10,9 +10,10 @@ const url = `https://jsonplaceholder.typicode.com/users`;
 
 
 function App() {
-	const [isLoading, setIsLoading] = useState(true);
+	// const [isLoading, setIsLoading] = useState(true);
+	const [isLoading, setIsLoading] = useState(false);
+
 	const [users, setUsers] = useState([]);
-	// const [error, setError] = useState(false)
 
 
 	useEffect(()=> {
@@ -20,7 +21,8 @@ function App() {
 			const res = await axios.get(url)
 
 			setUsers(res.data)
-			setIsLoading(false)
+			// setIsLoading(false)
+			setIsLoading(true)
 		}
 
 		getData()
@@ -32,7 +34,8 @@ function App() {
 			<h1> Display Active Users Account Details </h1>
 
 			{
-				!isLoading 
+				// !isLoading 
+				isLoading 
 					? (
 						users.map(user => (
 							<Account  key={user.id} user={user} />
